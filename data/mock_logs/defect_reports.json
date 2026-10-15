@@ -1,0 +1,59 @@
+[
+  {
+    "report_id": "R1",
+    "machine": "CNC-2",
+    "feature": "bore_diameter",
+    "description": "Bore diameter undersize on several CNC-2 parts.",
+    "part_ids": [
+      "P-2-020",
+      "P-2-024",
+      "P-2-025",
+      "P-2-026",
+      "P-2-027",
+      "P-2-028",
+      "P-2-029"
+    ]
+  },
+  {
+    "report_id": "R2",
+    "machine": "CNC-1",
+    "feature": "flatness",
+    "description": "Flatness out of tolerance on a run of CNC-1 parts.",
+    "part_ids": [
+      "P-1-015",
+      "P-1-016",
+      "P-1-017",
+      "P-1-018",
+      "P-1-019"
+    ]
+  },
+  {
+    "report_id": "R3",
+    "machine": "CNC-1",
+    "feature": "hole_position",
+    "description": "Hole position failures on recent CNC-1 parts.",
+    "part_ids": [
+      "P-1-028",
+      "P-1-029",
+      "P-1-030",
+      "P-1-031",
+      "P-1-032",
+      "P-1-033",
+      "P-1-034",
+      "P-1-035",
+      "P-1-036",
+      "P-1-037",
+      "P-1-038",
+      "P-1-039"
+    ]
+  },
+  {
+    "report_id": "R4",
+    "machine": "CNC-1",
+    "feature": "bore_diameter",
+    "description": "Single oversize bore on CNC-1.",
+    "part_ids": [
+      "P-1-008"
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+event_id,timestamp,machine,event_type,detail
+E001,2026-10-01T06:00,CNC-2,tool_change,Boring bar T12 replaced
+E002,2026-10-01T06:00,CNC-1,tool_change,Boring bar T12 replaced
+E003,2026-10-01T07:40,CNC-2,calibration,Spindle probe calibration completed
+E004,2026-10-01T08:30,CNC-1,coolant_temp_alarm,Coolant temperature 31.4C exceeds 28.0C limit
+E005,2026-10-01T09:20,CNC-1,coolant_temp_cleared,Coolant temperature back to 24.9C
+E006,2026-10-01T09:20,CNC-1,shift_change,Shift B start
+E007,2026-10-01T09:20,CNC-2,shift_change,Shift B start
+E008,2026-10-01T10:40,CNC-1,fixture_maintenance,Fixture F3 removed for cleaning and reinstalled
+E009,2026-10-01T11:00,CNC-2,tool_change,Boring bar T12 replaced

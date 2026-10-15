@@ -1,0 +1,30 @@
+[
+  {
+    "report_id": "R1",
+    "root_cause": "tool_wear",
+    "key_event_ids": [
+      "E001",
+      "E009"
+    ]
+  },
+  {
+    "report_id": "R2",
+    "root_cause": "thermal",
+    "key_event_ids": [
+      "E004",
+      "E005"
+    ]
+  },
+  {
+    "report_id": "R3",
+    "root_cause": "fixture_misalignment",
+    "key_event_ids": [
+      "E008"
+    ]
+  },
+  {
+    "report_id": "R4",
+    "root_cause": "none",
+    "key_event_ids": []
+  }
+]
