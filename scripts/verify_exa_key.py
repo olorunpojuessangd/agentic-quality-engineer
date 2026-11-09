@@ -13,13 +13,13 @@ import os
 import sys
 from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(ROOT_DIR / ".env")
 except ImportError:
     pass
-
-ROOT_DIR = Path(__file__).resolve().parent.parent
 
 
 def test_single_call(api_key: str):
@@ -40,11 +40,12 @@ def test_single_call(api_key: str):
 
     try:
         exa = Exa(api_key=api_key)
-        response = exa.search_and_contents(
+        # Canonical Exa search with token-efficient highlights
+        response = exa.search(
             query=query,
+            type="auto",
+            contents={"highlights": True},
             num_results=1,
-            text={"max_characters": 500},
-            highlights=True,
         )
 
         results = getattr(response, "results", [])
@@ -82,3 +83,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

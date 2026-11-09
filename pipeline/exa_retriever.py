@@ -10,15 +10,14 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-try:
-    from dotenv import load_dotenv
-
-    load_dotenv()
-except ImportError:
-    pass
-
 ROOT_DIR = Path(__file__).resolve().parent.parent
 CACHE_FILE = ROOT_DIR / "data" / "fixtures" / "exa_cache.json"
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv(ROOT_DIR / ".env")
+except ImportError:
+    pass
 
 
 class ExaRetriever:
@@ -86,14 +85,17 @@ class ExaRetriever:
                 "results": [],
             }
 
-        # Guardrailed Live API query (only invoked when live=True)
+        # Guardrailed Live API query (canonical Exa search with highlights and objective)
         query = self._build_query(feature, hypothesis_key, defect_description)
+        objective = self._build_objective(hypothesis_key, feature)
         try:
-            response = self._live_client.search_and_contents(
+            # Canonical Exa search per build-with-exa skill
+            response = self._live_client.search(
                 query=query,
+                objective=objective,
+                type="auto",
+                contents={"highlights": True},
                 num_results=2,
-                text={"max_characters": 1000},
-                highlights={"num_sentences": 2},
             )
             parsed_results = []
             for item in getattr(response, "results", []):
@@ -103,13 +105,14 @@ class ExaRetriever:
                     "published_date": getattr(item, "published_date", None),
                     "author": getattr(item, "author", None),
                     "score": getattr(item, "score", None),
-                    "text": getattr(item, "text", "")[:1000],
+                    "text": getattr(item, "text", "")[:1000] if hasattr(item, "text") and item.text else "",
                     "highlights": getattr(item, "highlights", []),
-                    "standard_reference": f"Exa Neural Search: {query}",
+                    "standard_reference": f"Exa Neural Search ({query})",
                 })
             return {
                 "source": "live_exa_api",
                 "query": query,
+                "objective": objective,
                 "results": parsed_results,
             }
         except Exception as exc:
@@ -119,8 +122,36 @@ class ExaRetriever:
                 "source": "live_fallback_to_cache",
                 "error": str(exc),
                 "query": query,
+                "objective": objective,
                 "results": cached.get("results", []),
             }
+
+    @staticmethod
+    def _build_objective(hypothesis_key: str, feature: str) -> str:
+        """Canonical Exa objective parameter describing the goal of the search turn."""
+        objectives = {
+            "tool_wear": (
+                "Identify precision manufacturing literature explaining how cutting tool insert "
+                "nose wear on boring bars causes internal bore diameters to drift undersize over time, "
+                "and reference ISO 3685 tool life standards."
+            ),
+            "thermal": (
+                "Identify machining engineering standards explaining how elevated coolant temperature "
+                "induces thermal expansion and workpiece warping/flatness errors, referencing ISO 230-3."
+            ),
+            "fixture_misalignment": (
+                "Identify workholding and machining guidelines explaining how fixture removal, cleaning, "
+                "and re-clamping creates datum reference shifts and true position hole location errors (ASME Y14.5)."
+            ),
+            "isolated_outlier": (
+                "Identify statistical process control (SPC) metrology guidelines on classifying isolated single-part "
+                "anomalies versus systematic assignable causes per ISO 11462-1."
+            ),
+        }
+        return objectives.get(
+            hypothesis_key,
+            f"Retrieve engineering root causes and standards for {feature} defects in CNC machining.",
+        )
 
     @staticmethod
     def _build_query(feature: str, hypothesis_key: str, description: str) -> str:
@@ -132,3 +163,4 @@ class ExaRetriever:
             "isolated_outlier": "CNC isolated single part dimensional outlier inspection CMM",
         }
         return query_map.get(hypothesis_key, f"CNC machining defect {feature} {description}")
+

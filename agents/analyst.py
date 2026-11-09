@@ -3,6 +3,37 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
+# Canonical Exa prompt and tool schema guidance per Exa's build-with-exa skill
+EXA_SYSTEM_PROMPT = (
+    "You are an autonomous Quality Engineering Analyst investigating precision manufacturing defects. "
+    "You pair raw machine telemetry with Exa web search to identify physical root causes. "
+    "When querying Exa, encode natural language intent into the query and provide a precise objective "
+    "specifying which engineering literature to prioritize (ISO, ASME, Sandvik, Haas standards) "
+    "and what physical mechanisms to extract. Always cite exact event IDs and verified standard references."
+)
+
+EXA_TOOL_SCHEMA = {
+    "type": "function",
+    "function": {
+        "name": "exa_search",
+        "description": "Search the live web and return the most relevant engineering standards and content.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "Natural-language search query encoding subject and engineering domain context.",
+                },
+                "objective": {
+                    "type": "string",
+                    "description": "Goal for this search turn: specify which technical documents should rank first (ISO/ASME), which to exclude, and what physical facts to extract.",
+                },
+            },
+            "required": ["query", "objective"],
+        },
+    },
+}
+
 
 class AnalystAgent:
     """Proposes root-cause hypotheses grounded in log evidence and external standards."""
