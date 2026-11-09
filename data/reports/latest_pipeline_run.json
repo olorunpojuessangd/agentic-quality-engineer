@@ -1,0 +1,120 @@
+[
+  {
+    "report_id": "R1",
+    "root_cause": "tool_wear",
+    "key_event_ids": [
+      "E001",
+      "E009"
+    ],
+    "verdict": "SUPPORTED",
+    "confidence": "high",
+    "verification_notes": "Verified: All 2 cited events exist on CNC-2 and support root cause 'tool_wear' for bore_diameter.",
+    "citations": [
+      {
+        "event_id": "E001",
+        "timestamp": "2026-10-01T06:00",
+        "machine": "CNC-2",
+        "event_type": "tool_change",
+        "detail": "Boring bar T12 replaced"
+      },
+      {
+        "event_id": "E009",
+        "timestamp": "2026-10-01T11:00",
+        "machine": "CNC-2",
+        "event_type": "tool_change",
+        "detail": "Boring bar T12 replaced"
+      }
+    ],
+    "external_standard": {
+      "source": "offline_cache",
+      "title": "Machining Fundamentals: Tool Wear Effects on Internal Boring Operations",
+      "standard": "ISO 3685: Tool-life testing with single-point turning tools",
+      "url": "https://www.sandvik.coromant.com/en-us/knowledge/machining/boring-tool-wear-troubleshooting"
+    },
+    "machine": "CNC-2",
+    "feature": "bore_diameter",
+    "retrieval_source": "offline_cache"
+  },
+  {
+    "report_id": "R2",
+    "root_cause": "thermal",
+    "key_event_ids": [
+      "E004",
+      "E005"
+    ],
+    "verdict": "SUPPORTED",
+    "confidence": "high",
+    "verification_notes": "Verified: All 2 cited events exist on CNC-1 and support root cause 'thermal' for flatness.",
+    "citations": [
+      {
+        "event_id": "E004",
+        "timestamp": "2026-10-01T08:30",
+        "machine": "CNC-1",
+        "event_type": "coolant_temp_alarm",
+        "detail": "Coolant temperature 31.4C exceeds 28.0C limit"
+      },
+      {
+        "event_id": "E005",
+        "timestamp": "2026-10-01T09:20",
+        "machine": "CNC-1",
+        "event_type": "coolant_temp_cleared",
+        "detail": "Coolant temperature back to 24.9C"
+      }
+    ],
+    "external_standard": {
+      "source": "offline_cache",
+      "title": "Thermal Error Compensation and Coolant Temperature Control in CNC Precision Milling",
+      "standard": "ISO 230-3: Test code for machine tools - Determination of thermal effects",
+      "url": "https://www.mmsonline.com/articles/controlling-thermal-growth-in-precision-machining"
+    },
+    "machine": "CNC-1",
+    "feature": "flatness",
+    "retrieval_source": "offline_cache"
+  },
+  {
+    "report_id": "R3",
+    "root_cause": "fixture_misalignment",
+    "key_event_ids": [
+      "E008"
+    ],
+    "verdict": "SUPPORTED",
+    "confidence": "high",
+    "verification_notes": "Verified: All 1 cited events exist on CNC-1 and support root cause 'fixture_misalignment' for hole_position.",
+    "citations": [
+      {
+        "event_id": "E008",
+        "timestamp": "2026-10-01T10:40",
+        "machine": "CNC-1",
+        "event_type": "fixture_maintenance",
+        "detail": "Fixture F3 removed for cleaning and reinstalled"
+      }
+    ],
+    "external_standard": {
+      "source": "offline_cache",
+      "title": "Workholding Repeatability: Fixture Reinstallation and Datum Misalignment in CNC Milling",
+      "standard": "ASME Y14.5-2018: Dimensioning and Tolerancing - Datum Reference Frames",
+      "url": "https://www.haascnc.com/service/troubleshooting-guides/workholding-datum-repeatability"
+    },
+    "machine": "CNC-1",
+    "feature": "hole_position",
+    "retrieval_source": "offline_cache"
+  },
+  {
+    "report_id": "R4",
+    "root_cause": "none",
+    "key_event_ids": [],
+    "verdict": "SUPPORTED_ABSTAIN",
+    "confidence": "high",
+    "verification_notes": "Verified: Defect R4 has only 1 failing part. No systematic machine event correlates with this occurrence. Correctly abstaining from spurious root-cause assignment.",
+    "citations": [],
+    "external_standard": {
+      "source": "offline_cache",
+      "title": "Statistical Process Control and Outlier Classification in Precision Metrology",
+      "standard": "ISO 11462-1: Guidelines for implementation of statistical process control (SPC)",
+      "url": "https://www.qualitymag.com/articles/spc-distinguishing-special-causes-from-single-part-anomalies"
+    },
+    "machine": "CNC-1",
+    "feature": "bore_diameter",
+    "retrieval_source": "offline_cache"
+  }
+]

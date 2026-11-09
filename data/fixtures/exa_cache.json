@@ -1,0 +1,77 @@
+{
+  "tool_wear": {
+    "query": "CNC boring bar tool wear bore diameter undersize internal turning tolerance",
+    "results": [
+      {
+        "title": "Machining Fundamentals: Tool Wear Effects on Internal Boring Operations",
+        "url": "https://www.sandvik.coromant.com/en-us/knowledge/machining/boring-tool-wear-troubleshooting",
+        "published_date": "2024-03-15T00:00:00.000Z",
+        "author": "Machining Knowledge Center",
+        "score": 0.942,
+        "text": "In internal boring operations, flank wear on the cutting insert nose gradually reduces effective cutting radius. As the boring bar insert wears down, the depth of cut is reduced, directly resulting in inner diameters drifting undersize across repeated cycles. Replacing the boring bar insert (tool change) restores the nominal bore dimension.",
+        "highlights": [
+          "flank wear on the cutting insert nose gradually reduces effective cutting radius",
+          "inner diameters drifting undersize across repeated cycles",
+          "Replacing the boring bar insert (tool change) restores nominal bore dimension"
+        ],
+        "standard_reference": "ISO 3685: Tool-life testing with single-point turning tools"
+      }
+    ]
+  },
+  "thermal": {
+    "query": "CNC milling coolant temperature thermal expansion part flatness warp tolerance",
+    "results": [
+      {
+        "title": "Thermal Error Compensation and Coolant Temperature Control in CNC Precision Milling",
+        "url": "https://www.mmsonline.com/articles/controlling-thermal-growth-in-precision-machining",
+        "published_date": "2024-02-10T00:00:00.000Z",
+        "author": "Precision Manufacturing Journal",
+        "score": 0.928,
+        "text": "Elevated cutting fluid and coolant temperatures (exceeding 28°C) cause differential thermal expansion across the machine spindle, workpiece, and table. In face milling operations, this thermal gradient produces workpiece warping and convex/concave surface profile errors, causing surface flatness measurements to exceed 0.020mm tolerance until coolant temperature stabilizes below operating limits.",
+        "highlights": [
+          "coolant temperatures exceeding 28°C cause differential thermal expansion",
+          "thermal gradient produces workpiece warping and surface flatness errors",
+          "exceeds tolerance until coolant temperature stabilizes below operating limits"
+        ],
+        "standard_reference": "ISO 230-3: Test code for machine tools - Determination of thermal effects"
+      }
+    ]
+  },
+  "fixture_misalignment": {
+    "query": "CNC fixture reinstallation alignment datum shift true position hole location error",
+    "results": [
+      {
+        "title": "Workholding Repeatability: Fixture Reinstallation and Datum Misalignment in CNC Milling",
+        "url": "https://www.haascnc.com/service/troubleshooting-guides/workholding-datum-repeatability",
+        "published_date": "2023-11-20T00:00:00.000Z",
+        "author": "Haas Applications Engineering",
+        "score": 0.915,
+        "text": "When a fixture is uninstalled for maintenance or cleaning and re-clamped, improper seating against location pins or chips underneath locating surfaces produces a datum shift. This spatial translation or angular tilt causes subsequent hole positions and true position features to fail geometric dimensioning and tolerancing (GD&T) specifications across all parts machined after the fixture event.",
+        "highlights": [
+          "fixture uninstalled for maintenance or cleaning and re-clamped produces datum shift",
+          "causes subsequent hole positions and true position features to fail",
+          "affects parts machined after the fixture event until re-zeroed"
+        ],
+        "standard_reference": "ASME Y14.5-2018: Dimensioning and Tolerancing - Datum Reference Frames"
+      }
+    ]
+  },
+  "isolated_outlier": {
+    "query": "CNC isolated single part dimensional outlier inspection CMM",
+    "results": [
+      {
+        "title": "Statistical Process Control and Outlier Classification in Precision Metrology",
+        "url": "https://www.qualitymag.com/articles/spc-distinguishing-special-causes-from-single-part-anomalies",
+        "published_date": "2024-01-18T00:00:00.000Z",
+        "author": "Quality Magazine Tech Desk",
+        "score": 0.887,
+        "text": "A single, isolated dimensional failure with no preceding or concurrent machine alarms, maintenance, or tool life events is classified as a random measurement artifact or isolated raw material inclusion. Without temporal clustering or supporting event telemetry, quality systems should classify the cause as unconfirmed/none to avoid spurious tooling adjustments.",
+        "highlights": [
+          "single, isolated dimensional failure with no preceding or concurrent machine alarms",
+          "classify cause as unconfirmed/none to avoid spurious adjustments"
+        ],
+        "standard_reference": "ISO 11462-1: Guidelines for implementation of statistical process control (SPC)"
+      }
+    ]
+  }
+}
